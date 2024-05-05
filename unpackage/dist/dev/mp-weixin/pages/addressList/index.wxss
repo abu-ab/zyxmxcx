@@ -1,0 +1,44 @@
+.list.data-v-960a3348 {
+  background: #eee;
+  height: 100vh;
+}
+.list .list-item.data-v-960a3348 {
+  background: #fff;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 12px;
+}
+.list .list-item .top.data-v-960a3348 {
+  display: flex;
+  align-items: center;
+}
+.list .list-item .top .initial.data-v-960a3348 {
+  font-size: 12px;
+  background: blue;
+  padding: 2px;
+  border-radius: 2px;
+  color: #fff;
+}
+.list .list-item .top .name.data-v-960a3348 {
+  font-size: 12px;
+  margin-left: 8px;
+}
+.list .list-item .top .phone.data-v-960a3348 {
+  font-size: 12px;
+  margin-left: 8px;
+}
+.list .list-item .content.data-v-960a3348 {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list .list-item .content .txt.data-v-960a3348 {
+  margin-left: 24px;
+  font-size: 12px;
+  color: #5e5e5e;
+}
+.list .list-item .content .edit.data-v-960a3348 {
+  width: 16px;
+  height: 16px;
+}

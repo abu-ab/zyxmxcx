@@ -1,0 +1,39 @@
+.container.data-v-ded5722e {
+  padding: 12px 20px;
+  position: relative;
+  height: 100vh;
+}
+.container .section.data-v-ded5722e {
+  margin-bottom: 20px;
+}
+.container .section .title.data-v-ded5722e {
+  font-size: 16px;
+  font-weight: 600;
+}
+.container .section .input-group.data-v-ded5722e {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+}
+.container .section .input-group label.data-v-ded5722e {
+  width: 80px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+}
+.container .section .input-group input.data-v-ded5722e {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.container .submit-section button.data-v-ded5722e {
+  position: absolute;
+  bottom: 80px;
+  width: calc(100% - 40px);
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}

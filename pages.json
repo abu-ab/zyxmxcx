@@ -1,0 +1,96 @@
+{
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/register/index",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		},
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/myqrcode/index",
+			"style": {
+				"navigationBarTitleText": "我的二维码"
+			}
+		},
+		{
+			"path": "pages/orderList/index",
+			"style": {
+				"navigationBarTitleText": "订单列表"
+			}
+		},
+
+		{
+			"path": "pages/orderDetail/index",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+			"path": "pages/createOrder/index",
+			"style": {
+				"navigationBarTitleText": "创建订单"
+			}
+		},
+		{
+			"path": "pages/addressList/index",
+			"style": {
+				"navigationBarTitleText": "地址列表"
+			}
+		},
+		{
+			"path": "pages/editAddress/index",
+			"style": {
+				"navigationBarTitleText": "编辑地址"
+			}
+		},
+
+		{
+			"path": "pages/dashboard/index",
+			"style": {
+				"navigationBarTitleText": "数据看板"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+		"selectedColor": "#79D5AD",
+		"color": "#999999",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "white",
+		"height": "0px",
+		"list": [{
+				"pagePath": "pages/home/index",
+				"text": " "
+			},
+			{
+				"pagePath": "pages/user/index",
+				"text": " "
+			}
+		]
+	}
+}

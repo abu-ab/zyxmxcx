@@ -1,0 +1,63 @@
+.order-list.data-v-517e59ee {
+  background: #eee;
+  height: 100vh;
+}
+.order-list .order-item.data-v-517e59ee {
+  background: #fff;
+  border-radius: 5px;
+  padding: 8px 4px;
+  margin: 0 12px 12px;
+}
+.order-list .order-item .top.data-v-517e59ee {
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 4px 8px;
+}
+.order-list .order-item .content.data-v-517e59ee {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.order-list .order-item .content .status.data-v-517e59ee {
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  margin-top: 12px;
+}
+.order-list .order-item .content .status .lian.data-v-517e59ee {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+}
+.order-list .order-item .content .address.data-v-517e59ee {
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
+  width: 100px;
+  justify-content: center;
+}
+.order-list .order-item .content .address.left.data-v-517e59ee {
+  align-items: flex-start;
+}
+.order-list .order-item .content .address.right.data-v-517e59ee {
+  align-items: flex-end;
+}
+.order-list .order-item .content .address .name.data-v-517e59ee {
+  font-size: 14px;
+}
+.order-list .order-item .content .address .city.data-v-517e59ee {
+  margin-top: 14px;
+  font-size: 14px;
+}
+.order-list .order-item .footer.data-v-517e59ee {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.order-list .order-item .footer .del.data-v-517e59ee {
+  font-size: 12px;
+  background: #fff;
+  margin-right: 8px;
+}

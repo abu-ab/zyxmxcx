@@ -1,0 +1,1 @@
+<view class="page-body data-v-4978fed5"><map class="map data-v-4978fed5" longitude="{{a}}" latitude="{{b}}" markers="{{c}}" polyline="{{d}}" scale="{{e}}" show-location="{{false}}" bindtap="{{f}}"></map><cover-view class="btn data-v-4978fed5">添加物流信息</cover-view></view><tabbar wx:if="{{g}}" class="data-v-4978fed5" u-i="4978fed5-0" bind:__l="__l" u-p="{{g}}"></tabbar>

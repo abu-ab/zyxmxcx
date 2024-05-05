@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/login/index",
+    "pages/register/index",
+    "pages/user/index",
+    "pages/myqrcode/index",
+    "pages/orderList/index",
+    "pages/orderDetail/index",
+    "pages/createOrder/index",
+    "pages/addressList/index",
+    "pages/editAddress/index",
+    "pages/dashboard/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "selectedColor": "#79D5AD",
+    "color": "#999999",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": " "
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": " "
+      }
+    ]
+  },
+  "usingComponents": {}
+}

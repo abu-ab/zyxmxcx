@@ -1,0 +1,25 @@
+.page-body.data-v-4978fed5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.page-body .map.data-v-4978fed5 {
+  width: 100%;
+  height: 100%;
+}
+.page-body .btn.data-v-4978fed5 {
+  position: absolute;
+  bottom: 100px;
+  height: 48px;
+  width: calc(100% - 40px);
+  border-radius: 12px;
+  box-sizing: border-box;
+  background: #3a88ff;
+  text-align: center;
+  line-height: 48px;
+  color: #fff;
+}

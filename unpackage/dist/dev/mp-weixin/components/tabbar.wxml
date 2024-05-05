@@ -1,0 +1,1 @@
+<view class="tabbar data-v-c6a4bdcf"><view wx:for="{{a}}" wx:for-item="item" wx:key="d" class="tabbar-item data-v-c6a4bdcf" bindtap="{{item.e}}"><image class="icon data-v-c6a4bdcf" src="{{item.a}}"/><view class="title data-v-c6a4bdcf" style="{{item.c}}">{{item.b}}</view></view><image src="/static/sao.png" class="scan data-v-c6a4bdcf" bindtap="{{b}}"/></view>
