@@ -25,6 +25,19 @@
 				"navigationBarTitleText": "个人中心"
 			}
 		},
+
+		{
+			"path": "pages/userList/index",
+			"style": {
+				"navigationBarTitleText": "用户列表"
+			}
+		},
+		{
+			"path": "pages/userDetail/index",
+			"style": {
+				"navigationBarTitleText": "用户详情"
+			}
+		},
 		{
 			"path": "pages/myqrcode/index",
 			"style": {
