@@ -4,6 +4,8 @@
     "pages/login/index",
     "pages/register/index",
     "pages/user/index",
+    "pages/userList/index",
+    "pages/userDetail/index",
     "pages/myqrcode/index",
     "pages/orderList/index",
     "pages/orderDetail/index",

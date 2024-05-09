@@ -6,6 +6,8 @@ if (!Math) {
   "./pages/login/index.js";
   "./pages/register/index.js";
   "./pages/user/index.js";
+  "./pages/userList/index.js";
+  "./pages/userDetail/index.js";
   "./pages/myqrcode/index.js";
   "./pages/orderList/index.js";
   "./pages/orderDetail/index.js";

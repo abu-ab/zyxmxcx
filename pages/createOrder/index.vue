@@ -13,7 +13,10 @@
 			</view>
 			<view class="input-group">
 				<label>省市区：</label>
-				<input v-model="formData.senderRegion" type="text" placeholder="请输入寄件人省市区" />
+				<picker :value="formData.senderRegion" @change="changeRegion" @columnchange="columnchange"
+					mode="multiSelector" class="input" :range="regionList" range-key="name">
+					<view class="uni-input">{{regionList[0]?.name}}</view>
+				</picker>
 			</view>
 			<view class="input-group">
 				<label>详细地址：</label>
@@ -34,7 +37,7 @@
 			</view>
 			<view class="input-group">
 				<label>省市区：</label>
-				<input v-model="formData.recipientRegion" type="text" placeholder="请输入收件人省市区" />
+				<picker :value="formData.recipientRegion" @change="changeRegion" mode="region" class="input"></picker>
 			</view>
 			<view class="input-group">
 				<label>详细地址：</label>
@@ -50,7 +53,8 @@
 </template>
 
 <script setup lang="ts">
-	import { reactive } from 'vue';
+	import { onMounted, reactive, ref } from 'vue';
+	import { getRegionList } from '../../api/region';
 
 	const formData = reactive({
 		senderName: '',
@@ -63,12 +67,24 @@
 		recipientAddress: ''
 	});
 
+	const regionList : any = ref([])
+
+	const changeRegion = () => {
+		console.log(123)
+	}
 
 	const submitOrder = () => {
 		uni.redirectTo({
 			url: "/pages/orderList/index"
 		})
 	}
+
+
+	onMounted(async () => {
+		let res = await getRegionList()
+		regionList.value = res
+		console.log(res)
+	})
 </script>
 
 <style lang="less" scoped>
@@ -97,12 +113,14 @@
 					font-weight: 500;
 				}
 
-				input {
+				input,
+				.input {
 					flex: 1;
 					padding: 4px 8px;
 					border: 1px solid #ccc;
 					border-radius: 5px;
 					font-size: 14px;
+					z-index: 999;
 				}
 			}
 		}
