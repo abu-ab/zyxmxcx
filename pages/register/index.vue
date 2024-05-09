@@ -7,7 +7,7 @@
 		<view class="input-container">
 			<view class="input-item">
 				<text class="input-label">用户名</text>
-				<input v-model="params.phone" type="text" placeholder="请输入用户名" />
+				<input v-model="params.name" type="text" placeholder="请输入用户名" />
 			</view>
 			<view class="input-item">
 				<text class="input-label">手机号</text>
@@ -19,7 +19,7 @@
 			</view>
 			<view class="input-item">
 				<text class="input-label">确认密码</text>
-				<input v-model="params.password" type="password" placeholder="请输入密码" />
+				<input v-model="params.surePassword" type="password" placeholder="请输入密码" />
 			</view>
 		</view>
 		<view class="btn-container">
@@ -35,12 +35,37 @@
 	import {
 		ref
 	} from "vue";
+	import {
+		registerApi
+	} from "../../api/user";
 
 	const params = ref({
+		name: "",
 		phone: "",
 		password: "",
+		surePassword: ""
 	});
-	const handleRegister = () => {};
+	const handleRegister = async () => {
+		let res = await registerApi(params.value)
+
+		if (res) {
+			uni.showToast({
+				title: "注册成功",
+				"icon": "success"
+			})
+			setTimeout(() => {
+				uni.redirectTo({
+					url: "/pages/login/index",
+				});
+			}, 1500)
+
+		} else {
+			uni.showToast({
+				title: "注册失败",
+				icon: "error"
+			})
+		}
+	};
 	const toLogin = () => {
 		uni.redirectTo({
 			url: "/pages/login/index",
