@@ -25,10 +25,39 @@
 	import {
 		ref
 	} from "vue";
+	import {
+		loginApi
+	} from "../../api/user";
 	const phone = ref("");
 	const password = ref("");
 
-	const handleLogin = () => {
+	const handleLogin = async () => {
+		let res = await loginApi({
+			phone: phone.value,
+			password: password.value
+		})
+		console.log(res)
+
+		if (res) {
+			uni.setStorageSync("userInfo", res)
+
+			uni.showToast({
+				title: "登录成功",
+				icon: "success"
+			})
+			setTimeout(() => {
+				uni.switchTab({
+					url: "/pages/home/index"
+				})
+			}, 1500)
+
+
+		} else {
+			uni.showToast({
+				title: "登录失败",
+				icon: "error"
+			})
+		}
 		console.log("手机号:", phone.value, "密码:", password.value);
 	};
 

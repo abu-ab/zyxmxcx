@@ -1,11 +1,34 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const api_user = require("../../api/user.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "index",
   setup(__props) {
     const phone = common_vendor.ref("");
     const password = common_vendor.ref("");
-    const handleLogin = () => {
+    const handleLogin = async () => {
+      let res = await api_user.loginApi({
+        phone: phone.value,
+        password: password.value
+      });
+      console.log(res);
+      if (res) {
+        common_vendor.index.setStorageSync("userInfo", res);
+        common_vendor.index.showToast({
+          title: "登录成功",
+          icon: "success"
+        });
+        setTimeout(() => {
+          common_vendor.index.switchTab({
+            url: "/pages/home/index"
+          });
+        }, 1500);
+      } else {
+        common_vendor.index.showToast({
+          title: "登录失败",
+          icon: "error"
+        });
+      }
       console.log("手机号:", phone.value, "密码:", password.value);
     };
     const toRegister = () => {

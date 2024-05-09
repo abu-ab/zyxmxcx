@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "",
+          "pathName": "pages/login/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/addressList/index",
           "pathName": "pages/addressList/index",
           "query": "",
