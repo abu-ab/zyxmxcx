@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "创建订单",
-  "usingComponents": {}
+  "usingComponents": {
+    "region-picker": "../../components/regionPicker"
+  }
 }

@@ -2,6 +2,7 @@
   padding: 12px 20px;
   position: relative;
   height: 100vh;
+  box-sizing: border-box;
 }
 .container .section.data-v-ded5722e {
   margin-bottom: 20px;
@@ -32,9 +33,9 @@
 }
 .container .submit-section button.data-v-ded5722e {
   position: absolute;
-  bottom: 80px;
+  bottom: 50px;
   width: calc(100% - 40px);
-  background-color: #007aff;
+  background-color: #167351;
   color: #fff;
   border: none;
   border-radius: 5px;
