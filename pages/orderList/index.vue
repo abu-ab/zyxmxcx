@@ -1,229 +1,56 @@
 <template>
 	<scroll-view scroll-y class="order-list">
-		<view class="order-item">
+		<view class="order-item" v-for="(item,index) in list" :key="index">
 			<view class="top">
 				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
 			</view>
 			<view class="content">
 				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
+					<view class="name">{{item.senderName}}</view>
+					<view class="city">{{item.senderRegion.split(",")[0]}}</view>
 				</view>
 				<view class="status">
 					<view class="txt">已签收</view>
 					<image src="../../static/lian.png" class="lian"></image>
 				</view>
 				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
+					<view class="name">{{item.receiverName}}</view>
+					<view class="city">{{item.receiverRegion.split(",")[0]}}</view>
 				</view>
 			</view>
 			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
-			</view>
-		</view>
-		<view class="order-item">
-			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
-			</view>
-			<view class="content">
-				<view class="address left">
-					<view class="name">刘健飞</view>
-					<view class="city">上海市</view>
-				</view>
-				<view class="status">
-					<view class="txt">已签收</view>
-					<image src="../../static/lian.png" class="lian"></image>
-				</view>
-				<view class="address right">
-					<view class="name">海澜之家无锡市</view>
-					<view class="city">无锡市</view>
-				</view>
-			</view>
-			<view class="footer">
-				<button class="del">删除</button>
+				<button class="del" @click="deleteOrder(item.id)">删除</button>
 			</view>
 		</view>
 	</scroll-view>
 </template>
 
 <script setup lang="ts">
+	import { onMounted, ref } from 'vue';
+	import { deleteLogist, logisticsList } from '../../api/logistics';
+
+	const list : any = ref([])
+	const deleteOrder = async (id) => {
+		uni.showModal({
+			title: "确认是否删除订单",
+			success: async () => {
+				let res = await deleteLogist(id)
+				if (res) {
+					loadList()
+				}
+			}
+		})
+
+	}
+	const loadList = async () => {
+		let res = await logisticsList({})
+		if (res) {
+			list.value = res
+		}
+	}
+	onMounted(async () => {
+		loadList()
+	})
 </script>
 
 <style lang="less" scoped>

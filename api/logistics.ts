@@ -17,5 +17,5 @@ export const updateLogist = (params) => {
 }
 
 export const deleteLogist = (id) => {
-	return http.delete(`/logist/${id}`)
+	return http.delete(`/logistics/${id}`)
 }
