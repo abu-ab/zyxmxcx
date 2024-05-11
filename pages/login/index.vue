@@ -7,7 +7,7 @@
 		<view class="input-container">
 			<view class="input-item">
 				<text class="input-label">手机号</text>
-				<input v-model="phone" type="number" placeholder="请输入手机号" />
+				<input v-model="phone" type="number" placeholder="请输入手机号" maxlength="11">
 			</view>
 			<view class="input-item">
 				<text class="input-label">密码</text>

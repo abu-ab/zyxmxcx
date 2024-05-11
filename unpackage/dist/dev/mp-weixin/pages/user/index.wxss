@@ -23,47 +23,74 @@
   width: 36px;
   height: 36px;
 }
-.ad.data-v-79e6a490 {
+.user-info .no-login.data-v-79e6a490 {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-info .no-login .to-login.data-v-79e6a490 {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+.user-info .no-login .to-login .enptyAvatar.data-v-79e6a490 {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+.user-info .no-login .right.data-v-79e6a490 {
+  width: 24px;
+  height: 24px;
+}
+.user-content.data-v-79e6a490 {
+  width: calc(100% - 10px);
+  background: #fff;
+  border-radius: 10px;
+  margin: -20px auto 0;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.user-content .ad.data-v-79e6a490 {
   width: 100%;
   height: 97px;
-  margin-top: 12px;
   padding: 0 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
 }
-.ad .ad-image.data-v-79e6a490 {
+.user-content .ad .ad-image.data-v-79e6a490 {
   width: 100%;
   height: 100%;
 }
-.list-item.data-v-79e6a490 {
+.user-content .list-item.data-v-79e6a490 {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
 }
-.list-item .item.data-v-79e6a490 {
+.user-content .list-item .item.data-v-79e6a490 {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 0;
   border-bottom: 1px solid #eee;
 }
-.list-item .item .item-left.data-v-79e6a490 {
+.user-content .list-item .item .item-left.data-v-79e6a490 {
   display: flex;
   align-items: center;
 }
-.list-item .item .item-left .icon.data-v-79e6a490 {
+.user-content .list-item .item .item-left .icon.data-v-79e6a490 {
   width: 24px;
   height: 24px;
 }
-.list-item .item .item-left .txt.data-v-79e6a490 {
+.user-content .list-item .item .item-left .txt.data-v-79e6a490 {
   font-size: 14px;
   line-height: 22px;
   font-weight: 500;
   margin-left: 8px;
 }
-.list-item .item .right.data-v-79e6a490 {
+.user-content .list-item .item .right.data-v-79e6a490 {
   width: 24px;
   height: 24px;
 }
