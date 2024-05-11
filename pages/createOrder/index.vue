@@ -9,7 +9,7 @@
 			</view>
 			<view class="input-group">
 				<label>手机号：</label>
-				<input v-model="formData.senderPhone" type="tel" placeholder="请输入寄件人手机号" />
+				<input v-model="formData.senderPhone" type="tel" placeholder="请输入寄件人手机号" maxlength="11" />
 			</view>
 			<view class="input-group">
 				<label>省市区：</label>
@@ -32,7 +32,7 @@
 			</view>
 			<view class="input-group">
 				<label>手机号：</label>
-				<input v-model="formData.receiverPhone" type="tel" placeholder="请输入收件人手机号" />
+				<input v-model="formData.receiverPhone" type="tel" placeholder="请输入收件人手机号" maxlength="11" />
 			</view>
 			<view class="input-group">
 				<label>省市区：</label>
@@ -96,7 +96,8 @@
 		params.userId = userInfo.id
 		console.log(params)
 		let res = await createLogistics(params)
-		if (res) {
+
+		if (typeof res == "boolean") {
 			uni.redirectTo({
 				url: "/pages/orderList/index"
 			})

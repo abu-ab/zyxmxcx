@@ -33,10 +33,12 @@
 	const deleteOrder = async (id) => {
 		uni.showModal({
 			title: "确认是否删除订单",
-			success: async () => {
-				let res = await deleteLogist(id)
-				if (res) {
-					loadList()
+			success: async (e) => {
+				if (e.confirm) {
+					let res = await deleteLogist(id)
+					if (res) {
+						loadList()
+					}
 				}
 			}
 		})

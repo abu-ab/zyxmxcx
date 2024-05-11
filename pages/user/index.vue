@@ -4,7 +4,11 @@
 			<template v-if="userInfo&&userInfo.id">
 				<view class="info-left">
 					<image src="../../static/avatar.png" class="avatar"></image>
-					<view class="phone">18913279983</view>
+					<view class="right">
+						<view class="name">{{userInfo.name}}</view>
+						<view class="phone">{{userInfo.phone}}</view>
+					</view>
+
 				</view>
 				<image src="../../static/qrcode.png" class="qrcode" @click="navigate('/pages/myqrcode/index')"></image>
 			</template>
@@ -107,11 +111,24 @@
 				height: 40px;
 			}
 
-			.phone {
-				font-size: 16px;
-				font-weight: 600;
-				margin-left: 8px;
+			.right {
+				margin-left: 12px;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+
+
+				.phone,
+				.name {
+					font-size: 16px;
+					font-weight: 600;
+				}
+
+				.phone {
+					margin-top: 8px;
+				}
 			}
+
 		}
 
 		.qrcode {

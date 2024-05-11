@@ -11,13 +11,26 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       start: "",
       end: ""
     });
+    const createOrder = () => {
+      const userInfo = common_vendor.index.getStorageSync("userInfo");
+      if (userInfo && userInfo.id) {
+        common_vendor.index.navigateTo({
+          url: "/pages/createOrder/index"
+        });
+      } else {
+        common_vendor.index.navigateTo({
+          url: "/pages/login/index"
+        });
+      }
+    };
     return (_ctx, _cache) => {
       return {
         a: search.start,
         b: common_vendor.o(($event) => search.start = $event.detail.value),
         c: search.end,
         d: common_vendor.o(($event) => search.end = $event.detail.value),
-        e: common_vendor.p({
+        e: common_vendor.o(createOrder),
+        f: common_vendor.p({
           currentPage: 0
         })
       };

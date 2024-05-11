@@ -13,7 +13,7 @@
 		</view>
 		<view class="list">
 			<view class="title">我的服务</view>
-			<view class="list-item">
+			<view class="list-item" @click="createOrder">
 				<view class="left">
 					<image src="../../static/car.png" class="image"></image>
 					<view class="text">快递</view>
@@ -39,6 +39,20 @@
 		start: "",
 		end: ""
 	})
+
+	const createOrder = () => {
+		const userInfo = uni.getStorageSync("userInfo")
+		if (userInfo && userInfo.id) {
+			uni.navigateTo({
+				url: "/pages/createOrder/index"
+			})
+		} else {
+			uni.navigateTo({
+				url: "/pages/login/index"
+			})
+		}
+
+	}
 </script>
 
 <style lang="less" scoped>

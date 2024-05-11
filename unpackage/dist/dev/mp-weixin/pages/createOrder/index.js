@@ -33,7 +33,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       params.userId = userInfo.id;
       console.log(params);
       let res = await api_logistics.createLogistics(params);
-      if (res) {
+      if (typeof res == "boolean") {
         common_vendor.index.redirectTo({
           url: "/pages/orderList/index"
         });

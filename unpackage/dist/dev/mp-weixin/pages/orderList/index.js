@@ -8,10 +8,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const deleteOrder = async (id) => {
       common_vendor.index.showModal({
         title: "确认是否删除订单",
-        success: async () => {
-          let res = await api_logistics.deleteLogist(id);
-          if (res) {
-            loadList();
+        success: async (e) => {
+          if (e.confirm) {
+            let res = await api_logistics.deleteLogist(id);
+            if (res) {
+              loadList();
+            }
           }
         }
       });

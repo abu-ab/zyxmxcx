@@ -24,14 +24,16 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       return common_vendor.e({
         a: userInfo.value && userInfo.value.id
       }, userInfo.value && userInfo.value.id ? {
-        b: common_vendor.o(($event) => navigate("/pages/myqrcode/index"))
+        b: common_vendor.t(userInfo.value.name),
+        c: common_vendor.t(userInfo.value.phone),
+        d: common_vendor.o(($event) => navigate("/pages/myqrcode/index"))
       } : {
-        c: common_vendor.o(($event) => navigate("/pages/login/index"))
+        e: common_vendor.o(($event) => navigate("/pages/login/index"))
       }, {
-        d: common_vendor.o(($event) => navigate("/pages/orderList/index")),
-        e: common_vendor.o(($event) => navigate("/pages/addressList/index")),
-        f: common_vendor.o(logout),
-        g: common_vendor.p({
+        f: common_vendor.o(($event) => navigate("/pages/orderList/index")),
+        g: common_vendor.o(($event) => navigate("/pages/addressList/index")),
+        h: common_vendor.o(logout),
+        i: common_vendor.p({
           currentPage: 1
         })
       });

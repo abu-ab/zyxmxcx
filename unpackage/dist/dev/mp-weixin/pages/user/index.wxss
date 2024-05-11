@@ -14,10 +14,19 @@
   width: 40px;
   height: 40px;
 }
-.user-info .info-left .phone.data-v-79e6a490 {
+.user-info .info-left .right.data-v-79e6a490 {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.user-info .info-left .right .phone.data-v-79e6a490,
+.user-info .info-left .right .name.data-v-79e6a490 {
   font-size: 16px;
   font-weight: 600;
-  margin-left: 8px;
+}
+.user-info .info-left .right .phone.data-v-79e6a490 {
+  margin-top: 8px;
 }
 .user-info .qrcode.data-v-79e6a490 {
   width: 36px;
