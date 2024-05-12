@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080'; // 设置基础 URL
+const BASE_URL = 'http://139.9.198.139:8081'; // 设置基础 URL
 
 export const http = {
 	async get(url : string, params ?: any) {

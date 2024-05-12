@@ -2,7 +2,7 @@
 	<view class="page-body">
 		<map class="map" :longitude="longitude" :latitude="latitude" :markers="covers" :polyline="polyline"
 			:scale="scale" :show-location="false" @tap="handleMapTap"></map>
-		<cover-view class="btn">添加物流信息</cover-view>
+		<!-- <cover-view class="btn">添加物流信息</cover-view> -->
 	</view>
 
 </template>
@@ -90,7 +90,7 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		position: relative;
 
 		.map {

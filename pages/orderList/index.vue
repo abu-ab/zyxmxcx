@@ -1,6 +1,6 @@
 <template>
 	<scroll-view scroll-y class="order-list">
-		<view class="order-item" v-for="(item,index) in list" :key="index">
+		<view class="order-item" v-for="(item,index) in list" :key="index" @click="toDetail(item.id)">
 			<view class="top">
 				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
 			</view>
@@ -19,7 +19,7 @@
 				</view>
 			</view>
 			<view class="footer">
-				<button class="del" @click="deleteOrder(item.id)">删除</button>
+				<button class="del" @click.stop="deleteOrder(item.id)">删除</button>
 			</view>
 		</view>
 	</scroll-view>
@@ -49,6 +49,11 @@
 		if (res) {
 			list.value = res
 		}
+	}
+	const toDetail = (id) => {
+		uni.navigateTo({
+			url: `/pages/orderDetail/index?id=${id}`
+		})
 	}
 	onMounted(async () => {
 		loadList()

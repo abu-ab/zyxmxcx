@@ -10,5 +10,5 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/jianfeiliu/Documents/code/zyxmxcx/pages/myqrcode/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/code/zyxmxcx/pages/myqrcode/index.vue"]]);
 wx.createPage(MiniProgramPage);

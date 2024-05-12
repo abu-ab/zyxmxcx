@@ -1,26 +1,49 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const api_logistics = require("../../api/logistics.js");
+const api_qrcode = require("../../api/qrcode.js");
+require("../../utils/http.js");
+if (!Math) {
+  myMap();
+}
+const myMap = () => "../map/index.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "index",
   setup(__props) {
-    const order = common_vendor.reactive({
-      createAt: "2024-05-11T10:52:09.000+00:00",
+    let order = common_vendor.ref({
+      createAt: null,
       deliveryTime: null,
-      expressCompany: "京东",
-      id: "03a97af0dacba1677eeadb7c459c65c2",
-      receiverAddress: "测测",
-      receiverName: "小红",
-      receiverPhone: "19000000000",
-      receiverRegion: "天津市,天津城区,和平区",
-      senderAddress: "测测",
-      senderName: "小绿",
-      senderPhone: "18000000000",
-      senderRegion: "河北省,石家庄市,长安区",
+      expressCompany: "",
+      id: "",
+      receiverAddress: "",
+      receiverName: "",
+      receiverPhone: "",
+      receiverRegion: "",
+      senderAddress: "",
+      senderName: "",
+      senderPhone: "",
+      senderRegion: "",
       shippingTime: null,
-      status: "100",
-      userId: "557b87b158ff22461e108b54661b8559",
-      waybillNumber: "3213123"
+      status: "",
+      userId: "",
+      waybillNumber: ""
     });
+    const qrcode = common_vendor.ref("");
+    common_vendor.onLoad((e) => {
+      console.log(e);
+      const id = e.id;
+      loadDetail(id);
+    });
+    const loadDetail = async (id) => {
+      let res = await api_logistics.logistDetail(id);
+      console.log(res);
+      order.value = res;
+      let code = await api_qrcode.getQRCode(id);
+      console.log("code", code);
+      if (typeof code === "boolean") {
+        qrcode.value = `http://139.9.198.139:8081/images/${id}.png`;
+      }
+    };
     const formatTime = (time) => {
       return new Date(time).toLocaleString();
     };
@@ -33,25 +56,30 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         return "未知状态";
     };
     return (_ctx, _cache) => {
-      return {
-        a: common_vendor.t(order.id),
-        b: common_vendor.t(formatTime(order.createdAt)),
-        c: common_vendor.t(order.senderName),
-        d: common_vendor.t(order.senderPhone),
-        e: common_vendor.t(order.senderRegion),
-        f: common_vendor.t(order.senderAddress),
-        g: common_vendor.t(order.receiverName),
-        h: common_vendor.t(order.receiverPhone),
-        i: common_vendor.t(order.receiverRegion),
-        j: common_vendor.t(order.receiverAddress),
-        k: common_vendor.t(order.expressCompany),
-        l: common_vendor.t(order.waybillNumber),
-        m: common_vendor.t(getStatusText(order.status)),
-        n: order.status === "100" ? 1 : "",
-        o: order.status === "200" ? 1 : ""
-      };
+      return common_vendor.e({
+        a: common_vendor.t(common_vendor.unref(order).id),
+        b: common_vendor.t(getStatusText(common_vendor.unref(order).status)),
+        c: common_vendor.unref(order).status === "100" ? 1 : "",
+        d: common_vendor.unref(order).status === "200" ? 1 : "",
+        e: common_vendor.t(formatTime(common_vendor.unref(order).createAt)),
+        f: common_vendor.t(common_vendor.unref(order).senderName),
+        g: common_vendor.t(common_vendor.unref(order).senderPhone),
+        h: common_vendor.t(common_vendor.unref(order).senderRegion.split(",").join(" ")),
+        i: common_vendor.t(common_vendor.unref(order).senderAddress),
+        j: common_vendor.t(common_vendor.unref(order).receiverName),
+        k: common_vendor.t(common_vendor.unref(order).receiverPhone),
+        l: common_vendor.t(common_vendor.unref(order).receiverRegion.split(",").join(" ")),
+        m: common_vendor.t(common_vendor.unref(order).receiverAddress),
+        n: common_vendor.t(common_vendor.unref(order).expressCompany),
+        o: common_vendor.t(common_vendor.unref(order).waybillNumber),
+        p: common_vendor.t(common_vendor.unref(order).shippingTime ? formatTime(common_vendor.unref(order).shippingTime) : "暂未发货"),
+        q: common_vendor.t(common_vendor.unref(order).deliveryTime ? formatTime(common_vendor.unref(order).deliveryTime) : "暂未收货"),
+        r: qrcode.value
+      }, qrcode.value ? {
+        s: qrcode.value
+      } : {});
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-3fb8c61c"], ["__file", "/Users/jianfeiliu/Documents/code/zyxmxcx/pages/orderDetail/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-3fb8c61c"], ["__file", "D:/code/zyxmxcx/pages/orderDetail/index.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,63 +1,122 @@
 <template>
 	<view class="container">
+		<view class="order-info map">
+			<myMap></myMap>
+		</view>
 		<view class="order-info">
-			<text class="title">订单详情</text>
 			<view class="info-item">
-				<text>订单编号:</text>
-				<text>{{ order.id }}</text>
+				<text class="info-label">订单编号:</text>
+				<text class="order-no">{{ order.id }}</text>
 			</view>
 			<view class="info-item">
-				<text>下单时间:</text>
-				<text>{{ formatTime(order.createdAt) }}</text>
+				<text class="info-label">订单状态:</text>
+				<text
+					:class="{ 'status-paid': order.status === '100', 'status-shipped': order.status === '200' }">{{ getStatusText(order.status) }}</text>
 			</view>
 			<view class="info-item">
-				<text>发件人:</text>
+				<text class="info-label">下单时间:</text>
+				<text>{{ formatTime(order.createAt) }}</text>
+			</view>
+			<view class="info-item">
+				<text class="info-label">发件人姓名:</text>
 				<text>{{ order.senderName }}</text>
+
+			</view>
+			<view class="info-item">
+				<text class="info-label">发件人手机号:</text>
 				<text>{{ order.senderPhone }}</text>
-				<text>{{ order.senderRegion }}</text>
-				<text>{{ order.senderAddress }}</text>
 			</view>
 			<view class="info-item">
-				<text>收件人:</text>
+				<text class="info-label">发件人地址:</text>
+				<view>
+					<text>{{ order.senderRegion.split(",").join(" ") }} </text>
+					<text> {{ order.senderAddress }}</text>
+				</view>
+			</view>
+			<view class="info-item">
+				<text class="info-label">收件人姓名:</text>
 				<text>{{ order.receiverName }}</text>
-				<text>{{ order.receiverPhone }}</text>
-				<text>{{ order.receiverRegion }}</text>
-				<text>{{ order.receiverAddress }}</text>
 			</view>
 			<view class="info-item">
-				<text>快递公司:</text>
+				<text class="info-label">收件人手机号:</text>
+				<text>{{ order.receiverPhone }}</text>
+			</view>
+			<view class="info-item">
+				<text class="info-label">收件人地址:</text>
+				<view>
+					<text>{{ order.receiverRegion.split(",").join(" ") }}</text>
+					<text>{{ order.receiverAddress }}</text>
+				</view>
+			</view>
+			<view class="info-item">
+				<text class="info-label">快递公司:</text>
 				<text>{{ order.expressCompany }}</text>
 			</view>
 			<view class="info-item">
-				<text>运单号:</text>
+				<text class="info-label">运单号:</text>
 				<text>{{ order.waybillNumber }}</text>
 			</view>
-			<text class="status"
-				:class="{ 'status-paid': order.status === '100', 'status-shipped': order.status === '200' }">{{ getStatusText(order.status) }}</text>
+			<view class="info-item">
+				<text class="info-label">发货时间:</text>
+				<text>{{ order.shippingTime?formatTime(order.shippingTime):"暂未发货" }}</text>
+			</view>
+			<view class="info-item">
+				<text class="info-label">收货时间:</text>
+				<text>{{order.deliveryTime? formatTime(order.deliveryTime) :"暂未收货"}}</text>
+			</view>
+		</view>
+		<view class="image-info">
+			<image :src="qrcode" v-if="qrcode" class="qrcode"></image>
 		</view>
 	</view>
 </template>
 
 <script setup lang="ts">
-	import { reactive } from 'vue';
-	const order = reactive({
-		createAt: "2024-05-11T10:52:09.000+00:00",
+	import { ref } from 'vue';
+	import { onLoad } from "@dcloudio/uni-app"
+	import myMap from "../map/index.vue"
+	import { logistDetail } from '../../api/logistics';
+	import { getQRCode } from '../../api/qrcode';
+	import { getUrl } from '../../api/region';
+	let order : any = ref({
+		createAt: null,
 		deliveryTime: null,
-		expressCompany: "京东",
-		id: "03a97af0dacba1677eeadb7c459c65c2",
-		receiverAddress: "测测",
-		receiverName: "小红",
-		receiverPhone: "19000000000",
-		receiverRegion: "天津市,天津城区,和平区",
-		senderAddress: "测测",
-		senderName: "小绿",
-		senderPhone: "18000000000",
-		senderRegion: "河北省,石家庄市,长安区",
+		expressCompany: "",
+		id: "",
+		receiverAddress: "",
+		receiverName: "",
+		receiverPhone: "",
+		receiverRegion: "",
+		senderAddress: "",
+		senderName: "",
+		senderPhone: "",
+		senderRegion: "",
 		shippingTime: null,
-		status: "100",
-		userId: "557b87b158ff22461e108b54661b8559",
-		waybillNumber: "3213123"
+		status: "",
+		userId: "",
+		waybillNumber: ""
 	})
+
+	const qrcode = ref("")
+
+
+	onLoad((e) => {
+		console.log(e)
+		const id = e.id;
+		loadDetail(id)
+	})
+
+
+	const loadDetail = async (id) => {
+		let res = await logistDetail(id)
+		console.log(res)
+		order.value = res;
+		let code = await getQRCode(id)
+		console.log("code", code)
+		if (typeof code === "boolean") {
+			qrcode.value = `http://139.9.198.139:8081/images/${id}.png`
+		}
+	}
 
 	const formatTime = (time) => {
 		return new Date(time).toLocaleString();
@@ -75,31 +134,62 @@
 	}
 
 	.order-info {
-		background-color: #f0f2f5;
-		border-radius: 10px;
-		padding: 20px;
+		background-color: #f9f9f9;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		margin-bottom: 20px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.map {
+		height: 200px;
 	}
 
 	.title {
 		font-size: 24px;
 		font-weight: bold;
 		margin-bottom: 20px;
+		color: #333;
+		text-align: center;
 	}
 
 	.info-item {
-		margin-bottom: 15px;
+		padding: 12px 8px;
+		border-bottom: 1px solid #ccc;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		text {
+			font-size: 14px;
+			text-align: right;
+		}
+
+		.order-no {
+			font-size: 12px;
+			font-weight: 600;
+		}
+
+		.info-label {
+			font-weight: bold;
+			color: #666;
+			margin-right: 10px;
+			font-size: 12px;
+			text-align: left;
+		}
+
+
 	}
 
-	.info-item text:first-child {
-		font-weight: bold;
-		margin-right: 5px;
-	}
+
 
 	.status {
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: bold;
 		margin-top: 20px;
+		text-align: center;
 	}
 
 	.status-paid {
@@ -110,5 +200,17 @@
 	.status-shipped {
 		color: #5bc0de;
 		/* 蓝色 */
+	}
+
+
+	.image-info {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.qrcode {
+			width: 300px;
+			height: 300px;
+		}
 	}
 </style>
