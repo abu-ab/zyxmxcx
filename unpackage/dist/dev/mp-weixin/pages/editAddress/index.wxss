@@ -1,0 +1,49 @@
+.address .list-item.data-v-80fabdbe {
+  padding: 12px 20px;
+  background-color: #fff;
+}
+.address .list-item .item.data-v-80fabdbe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.address .list-item .item .label.data-v-80fabdbe {
+  font-size: 14px;
+  color: #333;
+}
+.address .list-item .item .input.data-v-80fabdbe {
+  font-size: 14px;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  text-align: right;
+}
+.address .list-item .item .input .placeholder.data-v-80fabdbe {
+  color: #999;
+  font-size: 12px;
+  text-align: right;
+}
+.address .footer.data-v-80fabdbe {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.address .footer .save.data-v-80fabdbe {
+  width: calc(100vw - 40px);
+  height: 40px;
+  border-radius: 5px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  background-color: #fff;
+  color: #000000;
+  border: 1px solid #111111;
+  font-weight: 600;
+}

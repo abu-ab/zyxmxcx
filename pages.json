@@ -81,6 +81,12 @@
 			"style": {
 				"navigationBarTitleText": "数据看板"
 			}
+		},
+		{
+			"path": "pages/map/index",
+			"style": {
+				"navigationBarTitleText": "订单路径"
+			}
 		}
 	],
 	"globalStyle": {

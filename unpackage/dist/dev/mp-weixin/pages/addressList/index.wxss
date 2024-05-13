@@ -34,11 +34,29 @@
   align-items: center;
 }
 .list .list-item .content .txt.data-v-960a3348 {
-  margin-left: 24px;
+  margin-left: 36px;
   font-size: 12px;
   color: #5e5e5e;
 }
 .list .list-item .content .edit.data-v-960a3348 {
   width: 16px;
   height: 16px;
+}
+.footer.data-v-960a3348 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer .add.data-v-960a3348 {
+  width: calc(100vw - 40px);
+  height: 40px;
+  border-radius: 5px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  background-color: #fff;
+  color: #000000;
+  border: 1px solid #111111;
+  font-weight: 600;
 }

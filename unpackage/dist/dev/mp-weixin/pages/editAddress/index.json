@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "编辑地址",
-  "usingComponents": {}
+  "usingComponents": {
+    "region-picker": "../../components/regionPicker"
+  }
 }

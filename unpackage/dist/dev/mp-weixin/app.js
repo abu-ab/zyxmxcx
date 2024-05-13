@@ -15,6 +15,7 @@ if (!Math) {
   "./pages/addressList/index.js";
   "./pages/editAddress/index.js";
   "./pages/dashboard/index.js";
+  "./pages/map/index.js";
 }
 const _sfc_main = {
   onLaunch: function() {
@@ -27,7 +28,7 @@ const _sfc_main = {
     console.log("App Hide");
   }
 };
-const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/code/zyxmxcx/App.vue"]]);
+const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/jianfeiliu/Documents/code/zyxmxcx/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   return {

@@ -1,5 +1,5 @@
 <template>
-	<picker :value="value" @change="changeRegion" @columnchange="onColumnChange" mode="multiSelector" class="input"
+	<picker :value="selectRegion" @change="changeRegion" @columnchange="onColumnChange" mode="multiSelector" class="input"
 		:range="regionRange">
 		<view class="uni-input">{{selectRegionText}}</view>
 	</picker>
@@ -33,6 +33,7 @@
 			provinceList.push(province.name)
 			if (province.name === provinceName) {
 				provinceIndex = i
+				currentProvince = props.regionList[i]
 			}
 		}
 		let currentCity = currentProvince.childList[0]
@@ -41,6 +42,7 @@
 			cityList.push(city.name)
 			if (city.name === cityName) {
 				cityIndex = i
+				currentCity = currentProvince.childList[i]
 			}
 		}
 
@@ -51,7 +53,7 @@
 				districtIndex = i
 			}
 		}
-
+		console.log(provinceIndex, cityIndex, districtIndex)
 		selectRegion.value = [provinceIndex, cityIndex, districtIndex]
 		regionRange.value = [provinceList, cityList, districtList]
 		selectRegionText.value = `${provinceList[provinceIndex]} ${cityList[cityIndex]} ${districtList[districtIndex]}`
@@ -69,6 +71,7 @@
 	}
 
 	const onColumnChange = (e) => {
+		console.log(123123)
 		const column = e.detail.column
 		const row = e.detail.value
 		switch (column) {

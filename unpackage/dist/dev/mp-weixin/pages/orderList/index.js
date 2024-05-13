@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_logistics = require("../../api/logistics.js");
-require("../../utils/http.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "index",
   setup(__props) {
@@ -50,5 +49,5 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-517e59ee"], ["__file", "D:/code/zyxmxcx/pages/orderList/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-517e59ee"], ["__file", "/Users/jianfeiliu/Documents/code/zyxmxcx/pages/orderList/index.vue"]]);
 wx.createPage(MiniProgramPage);

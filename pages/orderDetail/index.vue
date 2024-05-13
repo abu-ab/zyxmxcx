@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="order-info map">
-			<myMap></myMap>
+			<myMap :noFull="true"></myMap>
 		</view>
 		<view class="order-info">
 			<view class="info-item">

@@ -40,6 +40,9 @@
 			onlyFromCamera: true,
 			success: (res) => {
 				console.log("扫描二维码成功,结果:" + res.result);
+				uni.navigateTo({
+					url: "/pages/map/index?id=" + res.result
+				})
 			},
 			error: (res) => {
 				console.log("扫描二维码出现错误");

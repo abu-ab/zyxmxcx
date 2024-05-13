@@ -29,6 +29,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         onlyFromCamera: true,
         success: (res) => {
           console.log("扫描二维码成功,结果:" + res.result);
+          common_vendor.index.navigateTo({
+            url: "/pages/map/index?id=" + res.result
+          });
         },
         error: (res) => {
           console.log("扫描二维码出现错误");
@@ -61,5 +64,5 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-c6a4bdcf"], ["__file", "D:/code/zyxmxcx/components/tabbar.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-c6a4bdcf"], ["__file", "/Users/jianfeiliu/Documents/code/zyxmxcx/components/tabbar.vue"]]);
 wx.createComponent(Component);

@@ -12,7 +12,8 @@
     "pages/createOrder/index",
     "pages/addressList/index",
     "pages/editAddress/index",
-    "pages/dashboard/index"
+    "pages/dashboard/index",
+    "pages/map/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
