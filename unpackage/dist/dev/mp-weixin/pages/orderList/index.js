@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_logistics = require("../../api/logistics.js");
+require("../../utils/http.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "index",
   setup(__props) {
@@ -24,6 +25,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         list.value = res;
       }
     };
+    const toDetail = (id) => {
+      common_vendor.index.navigateTo({
+        url: `/pages/orderDetail/index?id=${id}`
+      });
+    };
     common_vendor.onMounted(async () => {
       loadList();
     });
@@ -36,12 +42,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             c: common_vendor.t(item.receiverName),
             d: common_vendor.t(item.receiverRegion.split(",")[0]),
             e: common_vendor.o(($event) => deleteOrder(item.id), index),
-            f: index
+            f: index,
+            g: common_vendor.o(($event) => toDetail(item.id), index)
           };
         })
       };
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-517e59ee"], ["__file", "/Users/jianfeiliu/Documents/code/zyxmxcx/pages/orderList/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-517e59ee"], ["__file", "D:/code/zyxmxcx/pages/orderList/index.vue"]]);
 wx.createPage(MiniProgramPage);

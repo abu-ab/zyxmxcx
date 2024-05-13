@@ -2,27 +2,50 @@
   padding: 20px;
 }
 .order-info.data-v-3fb8c61c {
-  background-color: #f0f2f5;
-  border-radius: 10px;
-  padding: 20px;
+  background-color: #f9f9f9;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.order-info.data-v-3fb8c61c:last-child {
+  margin-bottom: 0;
+}
+.map.data-v-3fb8c61c {
+  height: 200px;
 }
 .title.data-v-3fb8c61c {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #333;
+  text-align: center;
 }
 .info-item.data-v-3fb8c61c {
-  margin-bottom: 15px;
+  padding: 12px 8px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.info-item text.data-v-3fb8c61c:first-child {
+.info-item text.data-v-3fb8c61c {
+  font-size: 14px;
+  text-align: right;
+}
+.info-item .order-no.data-v-3fb8c61c {
+  font-size: 12px;
+  font-weight: 600;
+}
+.info-item .info-label.data-v-3fb8c61c {
   font-weight: bold;
-  margin-right: 5px;
+  color: #666;
+  margin-right: 10px;
+  font-size: 12px;
+  text-align: left;
 }
 .status.data-v-3fb8c61c {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-top: 20px;
+  text-align: center;
 }
 .status-paid.data-v-3fb8c61c {
   color: #5cb85c;
@@ -31,4 +54,13 @@
 .status-shipped.data-v-3fb8c61c {
   color: #5bc0de;
   /* 蓝色 */
+}
+.image-info.data-v-3fb8c61c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-info .qrcode.data-v-3fb8c61c {
+  width: 300px;
+  height: 300px;
 }
