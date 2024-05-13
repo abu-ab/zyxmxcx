@@ -39,7 +39,7 @@
 					</view>
 					<image src="../../static/right.png" class="right"></image>
 				</view>
-				<view class="item">
+			<!-- 	<view class="item">
 					<view class="item-left">
 						<image class="icon" src="../../static/huowu-kaixin.png"></image>
 						<view class="txt">货物包裹</view>
@@ -52,7 +52,7 @@
 						<view class="txt">收藏包裹</view>
 					</view>
 					<image src="../../static/right.png" class="right"></image>
-				</view>
+				</view> -->
 				<view class="item" @click="logout">
 					<view class="item-left">
 						<image class="icon" src="../../static/back.png"></image>
