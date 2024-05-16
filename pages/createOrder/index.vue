@@ -2,7 +2,10 @@
 	<view class="container">
 		<!-- 寄件人信息 -->
 		<view class="section">
-			<view class="title">寄件人信息</view>
+			<view class="title-content">
+				<view class="title">寄件人信息</view>
+				<view class="address-book" @click="addressBoook">地址簿</view>
+			</view>
 			<view class="input-group">
 				<label>姓名：</label>
 				<input v-model="formData.senderName" type="text" placeholder="请输入寄件人姓名" />
@@ -25,7 +28,10 @@
 
 		<!-- 收件人信息 -->
 		<view class="section">
-			<view class="title">收件人信息</view>
+			<view class="title-content">
+				<view class="title">收件人信息</view>
+				<view class="address-book">地址簿</view>
+			</view>
 			<view class="input-group">
 				<label>姓名：</label>
 				<input v-model="formData.receiverName" type="text" placeholder="请输入收件人姓名" />
@@ -59,6 +65,10 @@
 		<view class="submit-section">
 			<button @click="submitOrder">提交订单</button>
 		</view>
+		<popupBottom ref="popup" v-model:visible="popupVisible" title="标题" radius="40" maxHeight="900" @close="onClose"
+			@reachBottom="onPopupReachBottom">
+			<view class="cot">内容</view>
+		</popupBottom>
 	</view>
 </template>
 
@@ -66,8 +76,11 @@
 	import { onMounted, reactive, ref } from 'vue';
 	import { getRegionList } from '../../api/region';
 	import regionPicker from "../../components/regionPicker.vue"
+	import popupBottom from "../../components/px-popup-bottom/px-popup-bottom.vue"
 	import { createLogistics } from '../../api/logistics';
 
+	const popupVisible = ref(false);
+	const popup = ref();
 	const regionList : any = ref([])
 	const formData = reactive({
 		senderName: '',
@@ -102,7 +115,12 @@
 				url: "/pages/orderList/index"
 			})
 		}
+	}
 
+	const addressBoook = () => {
+		console.log(123123)
+		popupVisible.value = true;
+		popup.value.setContViewHeight();
 	}
 
 	onMounted(async () => {
@@ -123,9 +141,22 @@
 		.section {
 			margin-bottom: 20px;
 
-			.title {
-				font-size: 16px;
-				font-weight: 600;
+			.title-content {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				.title {
+					font-size: 16px;
+					font-weight: 600;
+				}
+
+				.address-book {
+					padding: 4px 8px;
+					border: 1px solid #ccc;
+					border-radius: 4px;
+					font-size: 12px;
+				}
 			}
 
 			.input-group {

@@ -7,9 +7,20 @@
 .container .section.data-v-ded5722e {
   margin-bottom: 20px;
 }
-.container .section .title.data-v-ded5722e {
+.container .section .title-content.data-v-ded5722e {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .section .title-content .title.data-v-ded5722e {
   font-size: 16px;
   font-weight: 600;
+}
+.container .section .title-content .address-book.data-v-ded5722e {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
 }
 .container .section .input-group.data-v-ded5722e {
   display: flex;

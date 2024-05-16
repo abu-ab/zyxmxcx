@@ -3,20 +3,22 @@
 		<map class="map" :longitude="longitude" :latitude="latitude" :markers="covers" :polyline="polyline"
 			:scale="scale" :show-location="false" @tap="handleMapTap"></map>
 		<cover-view class="path-content" v-if="show">
-			<cover-view class="title">
-				轨迹描述
-				<cover-image src="../../static/zoom.png" class="zoom" @click="zoom"></cover-image>
-			</cover-view>
-			<cover-view class="path-item" v-for="(item,index) in pathItem" :key="index">
-				<cover-view class="info">
-					<cover-view class="name">{{item.operatorName}}</cover-view>
-					<cover-view class="phone">{{item.operatorPhone}}</cover-view>
+			<scroll-view scroll-y style="height: 100%;">
+				<cover-view class="title">
+					轨迹描述
+					<cover-image src="../../static/zoom.png" class="zoom" @click="zoom"></cover-image>
 				</cover-view>
-				<cover-view class="address">
-					{{item.addressLine}}
-					<button class="del" @click.stop="deletePath(index)">删除</button>
+				<cover-view class="path-item" v-for="(item,index) in pathItem" :key="index">
+					<cover-view class="info">
+						<cover-view class="name">{{item.operatorName}}</cover-view>
+						<cover-view class="phone">{{item.operatorPhone}}</cover-view>
+					</cover-view>
+					<cover-view class="address">
+						{{item.addressLine}}
+						<button class="del" @click.stop="deletePath(index)">删除</button>
+					</cover-view>
 				</cover-view>
-			</cover-view>
+			</scroll-view>
 		</cover-view>
 		<cover-view v-if="!props.noFull" class="btn" @click="add">添加物流轨迹</cover-view>
 	</view>
@@ -48,6 +50,7 @@
 	]);
 	const isFlag = ref(false);
 	const handleMapTap = async (event : any) => {
+		if(props.noFull) return;
 		// console.log(isFlag.value);
 		// if (isFlag.value) {
 		//   isFlag.value = false;

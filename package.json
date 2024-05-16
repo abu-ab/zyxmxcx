@@ -1,0 +1,16 @@
+{
+    "id": "px-popup-bottom",
+    "name": "popupBottom 底部弹窗",
+    "version": "1.0.4",
+    "description": "底部弹窗组件,带过渡动画，scrollview滚动不穿透，弹窗自动高度，超过最大高度自动滚动条，触底监听",
+    "keywords": [
+        "popup",
+        "弹窗"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    }
+}

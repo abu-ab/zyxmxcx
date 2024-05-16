@@ -17,6 +17,13 @@
         },
         {
           "name": "",
+          "pathName": "pages/map/index",
+          "query": "id=03a97af0dacba1677eeadb7c459c65c2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/addressList/index",
           "query": "",
           "launchMode": "default",
@@ -60,13 +67,6 @@
         {
           "name": "",
           "pathName": "pages/login/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/addressList/index",
-          "pathName": "pages/addressList/index",
           "query": "",
           "launchMode": "default",
           "scene": null

@@ -3,12 +3,15 @@ const common_vendor = require("../../common/vendor.js");
 const api_region = require("../../api/region.js");
 const api_logistics = require("../../api/logistics.js");
 if (!Math) {
-  regionPicker();
+  (regionPicker + popupBottom)();
 }
 const regionPicker = () => "../../components/regionPicker.js";
+const popupBottom = () => "../../components/px-popup-bottom/px-popup-bottom.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "index",
   setup(__props) {
+    const popupVisible = common_vendor.ref(false);
+    const popup = common_vendor.ref();
     const regionList = common_vendor.ref([]);
     const formData = common_vendor.reactive({
       senderName: "",
@@ -39,6 +42,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         });
       }
     };
+    const addressBoook = () => {
+      console.log(123123);
+      popupVisible.value = true;
+      popup.value.setContViewHeight();
+    };
     common_vendor.onMounted(async () => {
       let res = await api_region.getRegionList();
       regionList.value = res;
@@ -46,35 +54,48 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     });
     return (_ctx, _cache) => {
       return {
-        a: formData.senderName,
-        b: common_vendor.o(($event) => formData.senderName = $event.detail.value),
-        c: formData.senderPhone,
-        d: common_vendor.o(($event) => formData.senderPhone = $event.detail.value),
-        e: common_vendor.p({
+        a: common_vendor.o(addressBoook),
+        b: formData.senderName,
+        c: common_vendor.o(($event) => formData.senderName = $event.detail.value),
+        d: formData.senderPhone,
+        e: common_vendor.o(($event) => formData.senderPhone = $event.detail.value),
+        f: common_vendor.p({
           regionList: regionList.value,
           defaultValue: formData.senderRegion,
           change: changeRegion,
           keyValue: "senderRegion"
         }),
-        f: formData.senderAddress,
-        g: common_vendor.o(($event) => formData.senderAddress = $event.detail.value),
-        h: formData.receiverName,
-        i: common_vendor.o(($event) => formData.receiverName = $event.detail.value),
-        j: formData.receiverPhone,
-        k: common_vendor.o(($event) => formData.receiverPhone = $event.detail.value),
-        l: common_vendor.p({
+        g: formData.senderAddress,
+        h: common_vendor.o(($event) => formData.senderAddress = $event.detail.value),
+        i: formData.receiverName,
+        j: common_vendor.o(($event) => formData.receiverName = $event.detail.value),
+        k: formData.receiverPhone,
+        l: common_vendor.o(($event) => formData.receiverPhone = $event.detail.value),
+        m: common_vendor.p({
           regionList: regionList.value,
           defaultValue: formData.receiverRegion,
           change: changeRegion,
           keyValue: "receiverRegion"
         }),
-        m: formData.receiverAddress,
-        n: common_vendor.o(($event) => formData.receiverAddress = $event.detail.value),
-        o: formData.expressCompany,
-        p: common_vendor.o(($event) => formData.expressCompany = $event.detail.value),
-        q: formData.waybillNumber,
-        r: common_vendor.o(($event) => formData.waybillNumber = $event.detail.value),
-        s: common_vendor.o(submitOrder)
+        n: formData.receiverAddress,
+        o: common_vendor.o(($event) => formData.receiverAddress = $event.detail.value),
+        p: formData.expressCompany,
+        q: common_vendor.o(($event) => formData.expressCompany = $event.detail.value),
+        r: formData.waybillNumber,
+        s: common_vendor.o(($event) => formData.waybillNumber = $event.detail.value),
+        t: common_vendor.o(submitOrder),
+        v: common_vendor.sr(popup, "ded5722e-2", {
+          "k": "popup"
+        }),
+        w: common_vendor.o(_ctx.onClose),
+        x: common_vendor.o(_ctx.onPopupReachBottom),
+        y: common_vendor.o(($event) => popupVisible.value = $event),
+        z: common_vendor.p({
+          title: "标题",
+          radius: "40",
+          maxHeight: "900",
+          visible: popupVisible.value
+        })
       };
     };
   }
