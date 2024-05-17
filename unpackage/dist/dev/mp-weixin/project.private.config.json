@@ -10,6 +10,13 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/orderList/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/map/index",
           "query": "id=03a97af0dacba1677eeadb7c459c65c2",
           "launchMode": "default",

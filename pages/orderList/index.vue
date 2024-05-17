@@ -2,7 +2,7 @@
 	<scroll-view scroll-y class="order-list">
 		<view class="order-item" v-for="(item,index) in list" :key="index" @click="toDetail(item.id)">
 			<view class="top">
-				<view class="order-time">下单时间：2024-02-02 14:50:30</view>
+				<view class="order-time">下单时间：{{formatTime(item.createAt)}}</view>
 			</view>
 			<view class="content">
 				<view class="address left">
@@ -10,7 +10,7 @@
 					<view class="city">{{item.senderRegion.split(",")[0]}}</view>
 				</view>
 				<view class="status">
-					<view class="txt">已签收</view>
+					<view class="txt">{{getStatusText(item.status)}}</view>
 					<image src="../../static/lian.png" class="lian"></image>
 				</view>
 				<view class="address right">
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 	import { onMounted, ref } from 'vue';
 	import { deleteLogist, logisticsList } from '../../api/logistics';
-
+	import { formatTime, getStatusText } from "../../utils/utils"
 	const list : any = ref([])
 	const deleteOrder = async (id) => {
 		uni.showModal({

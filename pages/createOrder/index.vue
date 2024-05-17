@@ -4,7 +4,7 @@
 		<view class="section">
 			<view class="title-content">
 				<view class="title">寄件人信息</view>
-				<view class="address-book" @click="addressBoook">地址簿</view>
+				<view class="address-book" @click="addressBoook('sender')">地址簿</view>
 			</view>
 			<view class="input-group">
 				<label>姓名：</label>
@@ -30,7 +30,7 @@
 		<view class="section">
 			<view class="title-content">
 				<view class="title">收件人信息</view>
-				<view class="address-book">地址簿</view>
+				<view class="address-book" @click="addressBoook('receiver')">地址簿</view>
 			</view>
 			<view class="input-group">
 				<label>姓名：</label>
@@ -65,24 +65,35 @@
 		<view class="submit-section">
 			<button @click="submitOrder">提交订单</button>
 		</view>
-		<popupBottom ref="popup" v-model:visible="popupVisible" title="标题" radius="40" maxHeight="900" @close="onClose"
-			@reachBottom="onPopupReachBottom">
-			<view class="cot">内容</view>
+		<popupBottom ref="popup" v-model:visible="popupVisible" title="请选择地址" radius="40" maxHeight="900"
+			@close="onClose" @reachBottom="onPopupReachBottom">
+			<view class="list-item" v-for="(item,index) in addressLists" :key="index" @click="addAddress(item)">
+				<view class="top">
+					<view class="name">{{item.recipientName}}</view>
+					<view class="phone">{{item.phoneNumber}}</view>
+				</view>
+				<view class="content">
+					<view class="txt" :style="{'marginLeft':'8px'}">
+						{{ item.province }}{{ item.city }}{{ item.district }}{{ item.addressLine }}
+					</view>
+				</view>
+			</view>
 		</popupBottom>
 	</view>
 </template>
 
 <script setup lang="ts">
-	import { onMounted, reactive, ref } from 'vue';
+	import { onMounted, ref } from 'vue';
 	import { getRegionList } from '../../api/region';
 	import regionPicker from "../../components/regionPicker.vue"
 	import popupBottom from "../../components/px-popup-bottom/px-popup-bottom.vue"
 	import { createLogistics } from '../../api/logistics';
+	import { addressList } from '../../api/addressApi';
 
 	const popupVisible = ref(false);
 	const popup = ref();
 	const regionList : any = ref([])
-	const formData = reactive({
+	const formData = ref({
 		senderName: '',
 		senderPhone: '',
 		senderRegion: [],
@@ -94,15 +105,16 @@
 		expressCompany: "",
 		waybillNumber: ""
 	});
-
+	const addressLists : any = ref([])
+	const type = ref("")
 
 
 	const changeRegion = (item, key) => {
-		formData[key] = item
+		formData.value[key] = item
 	}
 
 	const submitOrder = async () => {
-		const params = JSON.parse(JSON.stringify(formData))
+		const params = JSON.parse(JSON.stringify(formData.value))
 		const userInfo = uni.getStorageSync("userInfo")
 		params.senderRegion = params.senderRegion.join(",")
 		params.receiverRegion = params.receiverRegion.join(",")
@@ -117,16 +129,44 @@
 		}
 	}
 
-	const addressBoook = () => {
+	const addressBoook = (item) => {
 		console.log(123123)
+		type.value = item
 		popupVisible.value = true;
 		popup.value.setContViewHeight();
+	}
+
+	const loadAddressList = async () => {
+		const userInfo = uni.getStorageSync("userInfo")
+		let res = await addressList(userInfo.id)
+		if (res) {
+			console.log(res)
+			addressLists.value = res
+		}
+	}
+
+
+	const addAddress = (item) => {
+		console.log(item)
+		if (type.value === "sender") {
+			formData.value.senderName = item.recipientName
+			formData.value.senderPhone = item.phoneNumber
+			formData.value.senderRegion = [item.province, item.city, item.district]
+			formData.value.senderAddress = item.addressLine
+		} else if (type.value === "receiver") {
+			formData.value.receiverName = item.recipientName
+			formData.value.receiverPhone = item.phoneNumber
+			formData.value.receiverRegion = [item.province, item.city, item.district]
+			formData.value.receiverAddress = item.addressLine
+		}
+		popupVisible.value = false;
 	}
 
 	onMounted(async () => {
 		let res = await getRegionList()
 		regionList.value = res
 		// selectCurrentRegion()
+		loadAddressList()
 		console.log(res)
 	})
 </script>
@@ -193,6 +233,54 @@
 			color: #fff;
 			border: none;
 			border-radius: 5px;
+		}
+
+		.list-item {
+			background: #fff;
+			border-radius: 5px;
+			padding: 12px 16px;
+			border-bottom: 1px solid #ccc;
+
+			.top {
+				display: flex;
+				align-items: center;
+
+				.initial {
+					font-size: 12px;
+					background: blue;
+					padding: 2px;
+					border-radius: 2px;
+					color: #fff;
+				}
+
+				.name {
+					font-size: 12px;
+					margin-left: 8px;
+				}
+
+				.phone {
+					font-size: 12px;
+					margin-left: 8px;
+				}
+			}
+
+			.content {
+				margin-top: 12px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.txt {
+					margin-left: 36px;
+					font-size: 12px;
+					color: #5e5e5e;
+				}
+
+				.edit {
+					width: 16px;
+					height: 16px
+				}
+			}
 		}
 	}
 </style>

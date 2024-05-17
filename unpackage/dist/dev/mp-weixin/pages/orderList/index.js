@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_logistics = require("../../api/logistics.js");
+const utils_utils = require("../../utils/utils.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "index",
   setup(__props) {
@@ -36,13 +37,15 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       return {
         a: common_vendor.f(list.value, (item, index, i0) => {
           return {
-            a: common_vendor.t(item.senderName),
-            b: common_vendor.t(item.senderRegion.split(",")[0]),
-            c: common_vendor.t(item.receiverName),
-            d: common_vendor.t(item.receiverRegion.split(",")[0]),
-            e: common_vendor.o(($event) => deleteOrder(item.id), index),
-            f: index,
-            g: common_vendor.o(($event) => toDetail(item.id), index)
+            a: common_vendor.t(common_vendor.unref(utils_utils.formatTime)(item.createAt)),
+            b: common_vendor.t(item.senderName),
+            c: common_vendor.t(item.senderRegion.split(",")[0]),
+            d: common_vendor.t(common_vendor.unref(utils_utils.getStatusText)(item.status)),
+            e: common_vendor.t(item.receiverName),
+            f: common_vendor.t(item.receiverRegion.split(",")[0]),
+            g: common_vendor.o(($event) => deleteOrder(item.id), index),
+            h: index,
+            i: common_vendor.o(($event) => toDetail(item.id), index)
           };
         })
       };

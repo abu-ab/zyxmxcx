@@ -77,7 +77,7 @@
 	import myMap from "../map/index.vue"
 	import { logistDetail } from '../../api/logistics';
 	import { getQRCode } from '../../api/qrcode';
-	import { getUrl } from '../../api/region';
+	import { formatTime, getStatusText } from "../../utils/utils"
 	let order : any = ref({
 		createAt: null,
 		deliveryTime: null,
@@ -116,15 +116,6 @@
 		if (typeof code === "boolean") {
 			qrcode.value = `http://139.9.198.139:8081/images/${id}.png`
 		}
-	}
-
-	const formatTime = (time) => {
-		return new Date(time).toLocaleString();
-	}
-	const getStatusText = (status) => {
-		if (status === '100') return '待发货';
-		else if (status === '200') return '已发货';
-		else return '未知状态';
 	}
 </script>
 

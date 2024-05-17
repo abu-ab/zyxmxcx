@@ -1,6 +1,6 @@
 <template>
-	<picker :value="selectRegion" @change="changeRegion" @columnchange="onColumnChange" mode="multiSelector" class="input"
-		:range="regionRange">
+	<picker :value="selectRegion" @change="changeRegion" @columnchange="onColumnChange" mode="multiSelector"
+		class="input" :range="regionRange">
 		<view class="uni-input">{{selectRegionText}}</view>
 	</picker>
 </template>
@@ -10,6 +10,10 @@
 	const props : any = defineProps(["regionList", "defaultValue", "change", "keyValue"]);
 
 	watch(() => props.regionList, () => {
+		selectCurrentRegion()
+	})
+
+	watch(() => props.defaultValue, () => {
 		selectCurrentRegion()
 	})
 

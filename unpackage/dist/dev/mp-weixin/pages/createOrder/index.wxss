@@ -51,3 +51,43 @@
   border: none;
   border-radius: 5px;
 }
+.container .list-item.data-v-ded5722e {
+  background: #fff;
+  border-radius: 5px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ccc;
+}
+.container .list-item .top.data-v-ded5722e {
+  display: flex;
+  align-items: center;
+}
+.container .list-item .top .initial.data-v-ded5722e {
+  font-size: 12px;
+  background: blue;
+  padding: 2px;
+  border-radius: 2px;
+  color: #fff;
+}
+.container .list-item .top .name.data-v-ded5722e {
+  font-size: 12px;
+  margin-left: 8px;
+}
+.container .list-item .top .phone.data-v-ded5722e {
+  font-size: 12px;
+  margin-left: 8px;
+}
+.container .list-item .content.data-v-ded5722e {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .list-item .content .txt.data-v-ded5722e {
+  margin-left: 36px;
+  font-size: 12px;
+  color: #5e5e5e;
+}
+.container .list-item .content .edit.data-v-ded5722e {
+  width: 16px;
+  height: 16px;
+}
