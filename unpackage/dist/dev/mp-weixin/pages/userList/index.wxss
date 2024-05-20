@@ -1,0 +1,25 @@
+.list.data-v-93b1025f {
+  background: #eee;
+  height: 100vh;
+}
+.list .list-item.data-v-93b1025f {
+  background: #fff;
+  border-radius: 5px;
+  padding: 8px 16px;
+  margin: 12px;
+}
+.list .list-item .item.data-v-93b1025f {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.list .list-item .item .picker.data-v-93b1025f {
+  font-size: 12px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.list .list-item .role.data-v-93b1025f {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

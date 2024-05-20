@@ -1,16 +1,23 @@
 <template>
 	<scroll-view class="list">
+		<view v-if="list.length==0" class="no-content">
+			<image src="../../static/no-order.png" class="no-image"></image>
+			<view class="txt">暂无地址</view>
+		</view>
 		<view class="list-item" v-for="(item,index) in list" :key="index">
 			<view class="top">
-				<view class="initial" v-if="item.isDefault">默认</view>
+				<!-- <view class="initial" v-if="item.isDefault">默认</view> -->
 				<view class="name">{{item.recipientName}}</view>
 				<view class="phone">{{item.phoneNumber}}</view>
 			</view>
 			<view class="content">
-				<view class="txt" :style="{'marginLeft':item.isDefault?'36px':'8px'}">
+				<view class="txt">
 					{{ item.province }}{{ item.city }}{{ item.district }}{{ item.addressLine }}
 				</view>
-				<image src="../../static/edit.png" class="edit" @click="edit(item.id)"></image>
+				<view class="right">
+					<image src="../../static/edit.png" class="edit" @click="edit(item.id)"></image>
+					<image src="../../static/del.png" class="del" @click="del(item.id)"></image>
+				</view>
 			</view>
 		</view>
 
@@ -24,7 +31,7 @@
 <script setup lang="ts">
 	import { ref } from 'vue';
 	import { onShow } from "@dcloudio/uni-app"
-	import { addressList } from '../../api/addressApi';
+	import { addressList, deleteAddress } from '../../api/addressApi';
 	let list : any = ref([])
 
 	const edit = (id) => {
@@ -39,14 +46,33 @@
 		})
 	}
 
-	onShow(async () => {
+	const del = async (id) => {
+		uni.showModal({
+			title: "确认是否删除地址",
+			success: async (e) => {
+				if (e.confirm) {
+					let res = await deleteAddress(id)
+					if (res) {
+						loadList()
+					}
+				}
+			}
+		})
+
+	}
+
+	const loadList = async () => {
 		const userInfo = uni.getStorageSync("userInfo")
-		let res = await addressList(userInfo.id)
+		let res = await addressList({ userId: userInfo.id })
 		if (res) {
 			console.log(res)
 			list.value = res
 			console.log(list)
 		}
+	}
+
+	onShow(async () => {
+		loadList()
 	})
 </script>
 
@@ -54,6 +80,25 @@
 	.list {
 		background: #eee;
 		height: 100vh;
+
+		.no-content {
+			height: 60%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+
+			.no-image {
+				width: 128px;
+				height: 128px;
+			}
+
+			.txt {
+				margin-top: 8px;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
 
 		.list-item {
 			background: #fff;
@@ -91,14 +136,25 @@
 				align-items: center;
 
 				.txt {
-					margin-left: 36px;
+					margin-left: 8px;
 					font-size: 12px;
 					color: #5e5e5e;
 				}
 
-				.edit {
-					width: 16px;
-					height: 16px
+				.right {
+					display: flex;
+					align-items: center;
+
+					.edit {
+						width: 16px;
+						height: 16px
+					}
+
+					.del {
+						width: 24px;
+						height: 24px;
+						margin-left: 12px;
+					}
 				}
 			}
 		}

@@ -1,1 +1,1 @@
-<view>用户列表</view>
+<scroll-view class="list data-v-93b1025f"><view wx:for="{{a}}" wx:for-item="item" class="list-item data-v-93b1025f"><view class="name item data-v-93b1025f">用户名：{{item.a}}</view><view class="phone item data-v-93b1025f">手机号：{{item.b}}</view><view class="time item data-v-93b1025f">创建时间：{{item.c}}</view><view class="role item data-v-93b1025f"> 用户角色：{{item.d}} <picker class="data-v-93b1025f" mode="selector" range="{{b}}" bindchange="{{item.e}}" range-key="name"><view class="picker data-v-93b1025f"> 修改角色 </view></picker></view></view></scroll-view>

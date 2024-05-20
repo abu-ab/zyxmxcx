@@ -20,7 +20,7 @@
 				</cover-view>
 			</scroll-view>
 		</cover-view>
-		<cover-view v-if="!props.noFull" class="btn" @click="add">添加物流轨迹</cover-view>
+		<cover-view v-if="!props.noFull&&order.status!='300'" class="btn" @click="add">添加物流轨迹</cover-view>
 	</view>
 
 </template>
@@ -30,6 +30,7 @@
 	import { geocoder } from "../../api/txApi";
 	import { onLoad } from "@dcloudio/uni-app"
 	import { addPath, pathList } from "../../api/orderPath";
+	import { logistDetail } from "../../api/logistics";
 	const id = ref("")
 	const props : any = defineProps(["noFull"]);
 	const show = ref(false)
@@ -38,7 +39,7 @@
 	const longitude = ref(116.39742);
 	const covers = ref([]);
 	const pathItem = ref([])
-
+	const order : any = ref({})
 	const polyline = ref([
 		{
 			points: [
@@ -50,7 +51,7 @@
 	]);
 	const isFlag = ref(false);
 	const handleMapTap = async (event : any) => {
-		if(props.noFull) return;
+		if (props.noFull || order.value.status == '300') return;
 		// console.log(isFlag.value);
 		// if (isFlag.value) {
 		//   isFlag.value = false;
@@ -147,8 +148,15 @@
 		}
 	}
 
+	const loadDetail = async (id) => {
+		let res = await logistDetail(id)
+		console.log(res)
+		order.value = res;
+	}
+
 	onLoad((e) => {
 		id.value = e.id
+		loadDetail(e.id)
 		loadPath(e.id)
 	})
 </script>

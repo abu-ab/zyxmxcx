@@ -39,20 +39,20 @@
 					</view>
 					<image src="../../static/right.png" class="right"></image>
 				</view>
-			<!-- 	<view class="item">
+				<view class="item" @click="navigate('/pages/userList/index')" v-if="checkRole('admin')">
 					<view class="item-left">
 						<image class="icon" src="../../static/huowu-kaixin.png"></image>
-						<view class="txt">货物包裹</view>
+						<view class="txt">用户列表</view>
 					</view>
 					<image src="../../static/right.png" class="right"></image>
 				</view>
-				<view class="item">
+				<view class="item" @click="navigate('/pages/dashboard/index')" v-if="checkRole('admin')">
 					<view class="item-left">
 						<image class="icon" src="../../static/shoucang.png"></image>
-						<view class="txt">收藏包裹</view>
+						<view class="txt">数据看板</view>
 					</view>
 					<image src="../../static/right.png" class="right"></image>
-				</view> -->
+				</view>
 				<view class="item" @click="logout">
 					<view class="item-left">
 						<image class="icon" src="../../static/back.png"></image>
@@ -74,6 +74,9 @@
 		onShow
 	} from "@dcloudio/uni-app"
 	import tabbar from "@/components/tabbar.vue";
+	import {
+		checkRole
+	} from "../../utils/utils"
 	const userInfo = ref(uni.getStorageSync("userInfo"))
 
 
@@ -82,14 +85,24 @@
 	})
 
 	const navigate = (url: string) => {
-		uni.navigateTo({
-			url: url
-		})
+		const userInfo = uni.getStorageSync("userInfo")
+		if (userInfo && userInfo.id) {
+			uni.navigateTo({
+				url: url
+			})
+		} else {
+			uni.navigateTo({
+				url: "/pages/login/index"
+			})
+		}
 	}
 
 	const logout = () => {
 		uni.setStorageSync("userInfo", {})
 		userInfo.value = {}
+		uni.switchTab({
+			url: "/pages/home/index"
+		})
 	}
 </script>
 

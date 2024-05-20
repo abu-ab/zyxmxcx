@@ -1,5 +1,9 @@
 <template>
 	<scroll-view scroll-y class="order-list">
+		<view v-if="list.length==0" class="no-content">
+			<image src="../../static/no-order.png" class="no-image"></image>
+			<view class="txt">暂无订单</view>
+		</view>
 		<view class="order-item" v-for="(item,index) in list" :key="index" @click="toDetail(item.id)">
 			<view class="top">
 				<view class="order-time">下单时间：{{formatTime(item.createAt)}}</view>
@@ -45,7 +49,8 @@
 
 	}
 	const loadList = async () => {
-		let res = await logisticsList({})
+		const userInfo = uni.getStorageSync("userInfo")
+		let res = await logisticsList({ userId: userInfo.id })
 		if (res) {
 			list.value = res
 		}
@@ -64,6 +69,25 @@
 	.order-list {
 		background: #eee;
 		height: 100vh;
+
+		.no-content {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+
+			.no-image {
+				width: 128px;
+				height: 128px;
+			}
+
+			.txt {
+				margin-top: 8px;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
 
 		.order-item {
 			background: #fff;

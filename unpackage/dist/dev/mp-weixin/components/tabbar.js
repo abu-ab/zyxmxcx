@@ -1,11 +1,19 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
+const utils_utils = require("../utils/utils.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "tabbar",
   props: {
     currentPage: Number
   },
   setup(__props) {
+    const flag = common_vendor.ref(true);
+    common_vendor.onShow(() => {
+      flag.value = false;
+      setTimeout(() => {
+        flag.value = true;
+      }, 200);
+    });
     const props = __props;
     const data = common_vendor.reactive({
       tabbarList: [
@@ -47,7 +55,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       common_vendor.index.hideTabBar();
     });
     return (_ctx, _cache) => {
-      return {
+      return common_vendor.e({
         a: common_vendor.f(data.tabbarList, (item, index, i0) => {
           return {
             a: index == props.currentPage ? item.selectedIconPath : item.iconPath,
@@ -59,8 +67,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             e: common_vendor.o(($event) => changeTabbar(item), index)
           };
         }),
-        b: common_vendor.o(toScan)
-      };
+        b: flag.value && common_vendor.unref(utils_utils.checkRole)(["courier", "admin"])
+      }, flag.value && common_vendor.unref(utils_utils.checkRole)(["courier", "admin"]) ? {
+        c: common_vendor.o(toScan)
+      } : {});
     };
   }
 });

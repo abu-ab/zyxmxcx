@@ -55,6 +55,13 @@
   color: #5bc0de;
   /* 蓝色 */
 }
+.btn.data-v-3fb8c61c {
+  text-align: center;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #66948a;
+}
 .image-info.data-v-3fb8c61c {
   display: flex;
   justify-content: center;

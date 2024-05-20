@@ -34,6 +34,19 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       const id = e.id;
       loadDetail(id);
     });
+    const confirm = () => {
+      common_vendor.index.showModal({
+        title: "是否确认订单",
+        success: async (e) => {
+          if (e.confirm) {
+            let res = await api_logistics.confirmOrderStatus(order.value.id);
+            if (res) {
+              loadDetail(order.value.id);
+            }
+          }
+        }
+      });
+    };
     const loadDetail = async (id) => {
       let res = await api_logistics.logistDetail(id);
       console.log(res);
@@ -66,9 +79,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         p: common_vendor.t(common_vendor.unref(order).waybillNumber),
         q: common_vendor.t(common_vendor.unref(order).shippingTime ? common_vendor.unref(utils_utils.formatTime)(common_vendor.unref(order).shippingTime) : "暂未发货"),
         r: common_vendor.t(common_vendor.unref(order).deliveryTime ? common_vendor.unref(utils_utils.formatTime)(common_vendor.unref(order).deliveryTime) : "暂未收货"),
-        s: qrcode.value
+        s: common_vendor.unref(order).status == "200"
+      }, common_vendor.unref(order).status == "200" ? {
+        t: common_vendor.o(confirm)
+      } : {}, {
+        v: qrcode.value
       }, qrcode.value ? {
-        t: qrcode.value
+        w: qrcode.value
       } : {});
     };
   }

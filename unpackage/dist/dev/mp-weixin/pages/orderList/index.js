@@ -20,7 +20,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       });
     };
     const loadList = async () => {
-      let res = await api_logistics.logisticsList({});
+      const userInfo = common_vendor.index.getStorageSync("userInfo");
+      let res = await api_logistics.logisticsList({ userId: userInfo.id });
       if (res) {
         list.value = res;
       }
@@ -34,8 +35,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       loadList();
     });
     return (_ctx, _cache) => {
-      return {
-        a: common_vendor.f(list.value, (item, index, i0) => {
+      return common_vendor.e({
+        a: list.value.length == 0
+      }, list.value.length == 0 ? {} : {}, {
+        b: common_vendor.f(list.value, (item, index, i0) => {
           return {
             a: common_vendor.t(common_vendor.unref(utils_utils.formatTime)(item.createAt)),
             b: common_vendor.t(item.senderName),
@@ -48,7 +51,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             i: common_vendor.o(($event) => toDetail(item.id), index)
           };
         })
-      };
+      });
     };
   }
 });

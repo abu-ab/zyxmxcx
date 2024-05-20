@@ -1,6 +1,6 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "http://139.9.198.139:8081";
 const http = {
   async get(url, params) {
     return await request(getFullUrl(url), "GET", params);

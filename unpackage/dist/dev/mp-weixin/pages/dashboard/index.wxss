@@ -1,3 +1,8 @@
+.title.data-v-a869e244 {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 12px;
+}
 .charts.data-v-a869e244 {
   width: 750rpx;
   height: 500rpx;

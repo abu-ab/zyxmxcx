@@ -65,6 +65,7 @@
 				<text>{{order.deliveryTime? formatTime(order.deliveryTime) :"暂未收货"}}</text>
 			</view>
 		</view>
+		<view class="btn" @click="confirm" v-if="order.status=='200'">确认订单</view>
 		<view class="image-info">
 			<image :src="qrcode" v-if="qrcode" class="qrcode"></image>
 		</view>
@@ -75,7 +76,7 @@
 	import { ref } from 'vue';
 	import { onLoad } from "@dcloudio/uni-app"
 	import myMap from "../map/index.vue"
-	import { logistDetail } from '../../api/logistics';
+	import { confirmOrderStatus, logistDetail } from '../../api/logistics';
 	import { getQRCode } from '../../api/qrcode';
 	import { formatTime, getStatusText } from "../../utils/utils"
 	let order : any = ref({
@@ -106,6 +107,20 @@
 		loadDetail(id)
 	})
 
+
+	const confirm = () => {
+		uni.showModal({
+			title: "是否确认订单",
+			success: async (e) => {
+				if (e.confirm) {
+					let res = await confirmOrderStatus(order.value.id)
+					if (res) {
+						loadDetail(order.value.id)
+					}
+				}
+			}
+		})
+	}
 
 	const loadDetail = async (id) => {
 		let res = await logistDetail(id)
@@ -193,6 +208,13 @@
 		/* 蓝色 */
 	}
 
+	.btn {
+		text-align: center;
+		padding: 8px 12px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		color: #66948a;
+	}
 
 	.image-info {
 		display: flex;

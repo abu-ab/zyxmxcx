@@ -1,7 +1,7 @@
 import { http } from "../utils/http"
 
 export const addressList = (params) => {
-	return http.get(`/address/list`, params)
+	return http.put(`/address/list`, params)
 }
 
 export const createAddress = (params) => {

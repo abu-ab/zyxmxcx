@@ -1,5 +1,6 @@
-const BASE_URL = 'http://localhost:8080'; // 设置基础 URL
+const BASE_URL = 'http://139.9.198.139:8081'; // 设置基础 URL
 // http://139.9.198.139:8081
+// http://localhost:8080
 export const http = {
 	async get(url : string, params ?: any) {
 		return await request(getFullUrl(url), 'GET', params);

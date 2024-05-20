@@ -6,12 +6,25 @@
         " />
 			<view class="title" :style="index == props.currentPage ? { color: '#6cc2c1' } : ''">{{ item.text }}</view>
 		</view>
-		<img src="../static/sao.png" class="scan" @click="toScan" />
+		<img src="../static/sao.png" class="scan" @click="toScan" v-if="flag&&checkRole(['courier','admin'])" />
 	</view>
 </template>
 
 <script lang="ts" setup>
-	import { reactive, defineProps, onMounted } from "vue";
+	import { reactive, defineProps, onMounted, ref } from "vue";
+	import { checkRole } from "../utils/utils"
+	import {
+		onShow
+	} from "@dcloudio/uni-app"
+	const flag = ref(true)
+
+
+	onShow(() => {
+		flag.value = false
+		setTimeout(() => {
+			flag.value = true
+		}, 200)
+	})
 
 	const props = defineProps({
 		currentPage: Number,

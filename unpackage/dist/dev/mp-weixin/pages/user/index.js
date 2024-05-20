@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const utils_utils = require("../../utils/utils.js");
 if (!Math) {
   tabbar();
 }
@@ -12,13 +13,23 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       userInfo.value = common_vendor.index.getStorageSync("userInfo");
     });
     const navigate = (url) => {
-      common_vendor.index.navigateTo({
-        url
-      });
+      const userInfo2 = common_vendor.index.getStorageSync("userInfo");
+      if (userInfo2 && userInfo2.id) {
+        common_vendor.index.navigateTo({
+          url
+        });
+      } else {
+        common_vendor.index.navigateTo({
+          url: "/pages/login/index"
+        });
+      }
     };
     const logout = () => {
       common_vendor.index.setStorageSync("userInfo", {});
       userInfo.value = {};
+      common_vendor.index.switchTab({
+        url: "/pages/home/index"
+      });
     };
     return (_ctx, _cache) => {
       return common_vendor.e({
@@ -32,8 +43,16 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       }, {
         f: common_vendor.o(($event) => navigate("/pages/orderList/index")),
         g: common_vendor.o(($event) => navigate("/pages/addressList/index")),
-        h: common_vendor.o(logout),
-        i: common_vendor.p({
+        h: common_vendor.unref(utils_utils.checkRole)("admin")
+      }, common_vendor.unref(utils_utils.checkRole)("admin") ? {
+        i: common_vendor.o(($event) => navigate("/pages/userList/index"))
+      } : {}, {
+        j: common_vendor.unref(utils_utils.checkRole)("admin")
+      }, common_vendor.unref(utils_utils.checkRole)("admin") ? {
+        k: common_vendor.o(($event) => navigate("/pages/dashboard/index"))
+      } : {}, {
+        l: common_vendor.o(logout),
+        m: common_vendor.p({
           currentPage: 1
         })
       });

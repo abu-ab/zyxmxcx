@@ -1,0 +1,13 @@
+.info-section.data-v-0b4bd26a {
+  padding: 0 20px;
+  text-align: center;
+}
+.info-section .info-item.data-v-0b4bd26a {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+.info-section .info-item .label.data-v-0b4bd26a {
+  font-weight: bold;
+}

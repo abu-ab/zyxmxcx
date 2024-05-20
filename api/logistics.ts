@@ -19,3 +19,7 @@ export const updateLogist = (params) => {
 export const deleteLogist = (id) => {
 	return http.delete(`/logistics/${id}`)
 }
+
+export const confirmOrderStatus = (id) => {
+	return http.get(`/logistics/confirm/${id}`)
+}
