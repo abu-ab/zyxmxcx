@@ -32,14 +32,19 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       ]
     });
     const toScan = function() {
-      console.log(23);
       common_vendor.index.scanCode({
         onlyFromCamera: true,
         success: (res) => {
           console.log("扫描二维码成功,结果:" + res.result);
-          common_vendor.index.navigateTo({
-            url: "/pages/map/index?id=" + res.result
-          });
+          if (utils_utils.checkRole(["courier", "admin"])) {
+            common_vendor.index.navigateTo({
+              url: "/pages/map/index?id=" + res.result
+            });
+          } else {
+            common_vendor.index.navigateTo({
+              url: `/pages/orderDetail/index?id=${res.result}`
+            });
+          }
         },
         error: (res) => {
           console.log("扫描二维码出现错误");
@@ -55,7 +60,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       common_vendor.index.hideTabBar();
     });
     return (_ctx, _cache) => {
-      return common_vendor.e({
+      return {
         a: common_vendor.f(data.tabbarList, (item, index, i0) => {
           return {
             a: index == props.currentPage ? item.selectedIconPath : item.iconPath,
@@ -67,10 +72,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             e: common_vendor.o(($event) => changeTabbar(item), index)
           };
         }),
-        b: flag.value && common_vendor.unref(utils_utils.checkRole)(["courier", "admin"])
-      }, flag.value && common_vendor.unref(utils_utils.checkRole)(["courier", "admin"]) ? {
-        c: common_vendor.o(toScan)
-      } : {});
+        b: common_vendor.o(toScan)
+      };
     };
   }
 });

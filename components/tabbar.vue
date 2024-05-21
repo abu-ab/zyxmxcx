@@ -6,7 +6,7 @@
         " />
 			<view class="title" :style="index == props.currentPage ? { color: '#6cc2c1' } : ''">{{ item.text }}</view>
 		</view>
-		<img src="../static/sao.png" class="scan" @click="toScan" v-if="flag&&checkRole(['courier','admin'])" />
+		<img src="../static/sao.png" class="scan" @click="toScan" />
 	</view>
 </template>
 
@@ -48,14 +48,22 @@
 	});
 
 	const toScan = function () {
-		console.log(23);
 		uni.scanCode({
 			onlyFromCamera: true,
 			success: (res) => {
 				console.log("扫描二维码成功,结果:" + res.result);
-				uni.navigateTo({
-					url: "/pages/map/index?id=" + res.result
-				})
+
+				if (checkRole(['courier', 'admin'])) {
+					uni.navigateTo({
+						url: "/pages/map/index?id=" + res.result
+					})
+				} else {
+					uni.navigateTo({
+						url: `/pages/orderDetail/index?id=${res.result}`
+					})
+				}
+
+
 			},
 			error: (res) => {
 				console.log("扫描二维码出现错误");
