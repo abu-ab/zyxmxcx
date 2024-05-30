@@ -138,7 +138,7 @@
 
 	const loadAddressList = async () => {
 		const userInfo = uni.getStorageSync("userInfo")
-		let res = await addressList(userInfo.id)
+		let res = await addressList({ userId: userInfo.id })
 		if (res) {
 			console.log(res)
 			addressLists.value = res

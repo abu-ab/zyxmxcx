@@ -53,7 +53,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
     const loadAddressList = async () => {
       const userInfo = common_vendor.index.getStorageSync("userInfo");
-      let res = await api_addressApi.addressList(userInfo.id);
+      let res = await api_addressApi.addressList({ userId: userInfo.id });
       if (res) {
         console.log(res);
         addressLists.value = res;
