@@ -32,7 +32,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       console.log("手机号:", phone.value, "密码:", password.value);
     };
     const toRegister = () => {
-      console.log("跳转到注册页面");
       common_vendor.index.redirectTo({
         url: "/pages/register/index"
       });

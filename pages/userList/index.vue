@@ -1,5 +1,5 @@
 <template>
-	<scroll-view class="list">
+	<scroll-view class="list" scroll-y>
 		<view class="list-item" v-for="(item,index) in list">
 			<view class="name item">用户名：{{item.name}}</view>
 			<view class="phone item">手机号：{{item.phone}}</view>

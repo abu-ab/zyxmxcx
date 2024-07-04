@@ -56,7 +56,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       if (typeof code === "boolean") {
         qrcode.value = `http://139.9.198.139:8081/images/${id}.png`;
       }
+      common_vendor.index.stopPullDownRefresh();
     };
+    common_vendor.onPullDownRefresh(() => {
+      loadDetail(order.value.id);
+    });
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: common_vendor.p({

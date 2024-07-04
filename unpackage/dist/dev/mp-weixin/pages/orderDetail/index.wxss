@@ -1,5 +1,6 @@
 .container.data-v-3fb8c61c {
   padding: 20px;
+  box-sizing: border-box;
 }
 .order-info.data-v-3fb8c61c {
   background-color: #f9f9f9;

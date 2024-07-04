@@ -62,7 +62,6 @@
 	};
 
 	const toRegister = () => {
-		console.log("跳转到注册页面");
 		uni.redirectTo({
 			url: "/pages/register/index",
 		});

@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<scroll-view class="container" scroll-y>
 		<view class="order-info map">
 			<myMap :noFull="true"></myMap>
 		</view>
@@ -69,12 +69,12 @@
 		<view class="image-info">
 			<image :src="qrcode" v-if="qrcode" class="qrcode"></image>
 		</view>
-	</view>
+	</scroll-view>
 </template>
 
 <script setup lang="ts">
 	import { ref } from 'vue';
-	import { onLoad } from "@dcloudio/uni-app"
+	import { onLoad, onPullDownRefresh } from "@dcloudio/uni-app"
 	import myMap from "../map/index.vue"
 	import { confirmOrderStatus, logistDetail } from '../../api/logistics';
 	import { getQRCode } from '../../api/qrcode';
@@ -131,12 +131,19 @@
 		if (typeof code === "boolean") {
 			qrcode.value = `http://139.9.198.139:8081/images/${id}.png`
 		}
+		uni.stopPullDownRefresh()
 	}
+
+
+	onPullDownRefresh(() => {
+		loadDetail(order.value.id)
+	})
 </script>
 
 <style lang="less" scoped>
 	.container {
 		padding: 20px;
+		box-sizing: border-box;
 	}
 
 	.order-info {

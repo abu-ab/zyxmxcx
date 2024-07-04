@@ -46,6 +46,20 @@
 		surePassword: ""
 	});
 	const handleRegister = async () => {
+		if (params.value.password != params.value.surePassword) {
+			uni.showToast({
+				title: "两次密码不一致",
+				"icon": "error"
+			})
+			return
+		}
+		if (params.value.phone.length != 11) {
+			uni.showToast({
+				title: "手机号长度错误",
+				"icon": 'error'
+			})
+			return
+		}
 		let res = await registerApi(params.value)
 
 		if (res) {
